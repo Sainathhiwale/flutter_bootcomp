@@ -14,7 +14,14 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title:Center(child: Text("Examen"),) ),
-        body: Center(child: Text("My First App"),),
+        body:  Center(child: Text("My First App",style:
+        TextStyle(fontSize: 24,color: Colors.amberAccent
+        ),
+        ),
+
+        ),
+
+
       ),
     );
   }
