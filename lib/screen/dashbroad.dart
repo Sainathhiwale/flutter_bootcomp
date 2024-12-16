@@ -14,45 +14,25 @@ class Dashbroad extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
       ),
       body:  Center(
-           child: Column(
+           child: GridView.count(
+             crossAxisCount: 2, // Number of columns
+             crossAxisSpacing: 10.0, // Spacing between columns
+             mainAxisSpacing: 10.0, // Spacing between rows
              children: [
-               Text("Random number is ${getNumber()}"),
-               Text("Name is  ${getNameList(2)}"),
-               Text("Random number is ${getNumber()}"),
-             ],
-           )
+               Image.asset("images/apple.png"),
+               Image.asset("images/casino.png"),
+               Image.asset("images/lottery.png"),
+               Image.asset("images/roulette.png"),
+               Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Tesla_Model_S_Japan_trimmed.jpg/435px-Tesla_Model_S_Japan_trimmed.jpg"),
+               Image.network("https://media.autoexpress.co.uk/image/private/s--3XzRB3yS--/v1565798347/autoexpress/2019/08/04_7.jpg"),
+               Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Tesla_Model_S_Japan_trimmed.jpg/435px-Tesla_Model_S_Japan_trimmed.jpg"),
+               Image.network("https://media.autoexpress.co.uk/image/private/s--3XzRB3yS--/v1565798347/autoexpress/2019/08/04_7.jpg"),
 
+             ],
+           ),
       ),
     );
   }
 }
 
-int getNumber() {
-  return Random().nextInt(100);
-}
-List<String> getNameList(int count) {
-  // Predefined list of strings
-  List<String> names = [
-    "Alice",
-    "Bob",
-    "Charlie",
-    "David",
-    "Eve",
-    "Frank",
-    "Grace",
-    "Hannah",
-    "Ivy",
-    "Jack"
-  ];
-  // List to store random strings
-  List<String> randomNames = [];
-  Random random = Random();
-
-  // Generate 'count' random names
-  for (int i = 0; i < count; i++) {
-    String randomName = names[random.nextInt(names.length)];
-    randomNames.add(randomName);
-  }
-  return randomNames;
-}
 
