@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 void main(){
   runApp( MyApp());
 }
-
+// create different branch to maintain master code and free master for merging and ci-cd
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
