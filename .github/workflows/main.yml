@@ -33,6 +33,16 @@ jobs:
           channel: 'stable'
           architecture: x64
 
+      # Install the correct Android SDK
+      - name: Install Android SDK
+        run: |
+          echo "Installing Android SDK 35..."
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      # Accept SDK licenses
+      - name: Accept SDK Licenses
+        run: yes | sdkmanager --licenses
+
       # Build APK
       - run: flutter build apk --release --split-per-abi
 
