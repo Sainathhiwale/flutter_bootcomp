@@ -1,13 +1,11 @@
 on:
   pull_request:
     branches:
-      - main
-      - master
+      - flutter_icon_images
   push:
     branches:
-      - main
       - master
-      - develop
+
 name: "Build & Release"
 jobs:
   build:
