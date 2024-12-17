@@ -1,58 +1,58 @@
-on:
-  pull_request:
-    branches:
-      - flutter_icon_images
-  push:
-    branches:
-      - master
+  on:
+    pull_request:
+      branches:
+        - flutter_container_widgets
+    push:
+      branches:
+        - master
 
-name: "Build & Release"
-jobs:
-  build:
-    name: Build & Release
-    runs-on: macos-latest
-    steps:
-      # Check out the repository
-      - uses: actions/checkout@v3
+  name: "Build & Release"
+  jobs:
+    build:
+      name: Build & Release
+      runs-on: macos-latest
+      steps:
+        # Check out the repository
+        - uses: actions/checkout@v3
 
-      # Set up Java
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
+        # Set up Java
+        - uses: actions/setup-java@v3
+          with:
+            distribution: 'zulu'
+            java-version: '17'
 
-      # Set up Gradle
-      - name: Set up Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: 8.4
+        # Set up Gradle
+        - name: Set up Gradle
+          uses: gradle/gradle-build-action@v2
+          with:
+            gradle-version: 8.4
 
-      # Set up Flutter
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          architecture: x64
+        # Set up Flutter
+        - uses: subosito/flutter-action@v2
+          with:
+            channel: 'stable'
+            architecture: x64
 
 
 
-      # Build APK
-      - run: flutter build apk --release --split-per-abi
+        # Build APK
+        - run: flutter build apk --release --split-per-abi
 
-      # Build iOS
-      - run: |
-          flutter build ios --no-codesign
-          cd build/ios/iphoneos
-          mkdir Payload
-          cd Payload
-          ln -s ../Runner.app
-          cd ..
-          zip -r app.ipa Payload
+        # Build iOS
+        - run: |
+            flutter build ios --no-codesign
+            cd build/ios/iphoneos
+            mkdir Payload
+            cd Payload
+            ln -s ../Runner.app
+            cd ..
+            zip -r app.ipa Payload
 
-      # Push build artifacts to Releases
-      - name: Push to Releases
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/apk/release/*,build/ios/iphoneos/app.ipa"
-          tag: v1.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
+        # Push build artifacts to Releases
+        - name: Push to Releases
+          uses: ncipollo/release-action@v1
+          with:
+            artifacts: "build/app/outputs/apk/release/*,build/ios/iphoneos/app.ipa"
+            tag: v1.0.${{ github.run_number }}
+            token: ${{ secrets.TOKEN }}
 
