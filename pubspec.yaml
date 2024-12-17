@@ -66,6 +66,9 @@ flutter:
      - images/casino.png
      - images/lottery.png
      - images/roulette.png
+     - images/profile.jpg
+     - images/profile_bay.jpg
+     - images/sharma.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
