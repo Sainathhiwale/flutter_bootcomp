@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Homeappbar extends StatelessWidget {
   const Homeappbar({super.key});
@@ -13,8 +14,20 @@ class Homeappbar extends StatelessWidget {
         ),
         backgroundColor: Colors.blueAccent,
         actions: [
-          IconButton(icon:Icon(Icons.shopping_cart),onPressed: (){}, ),
-          IconButton(icon: Icon(Icons.search), onPressed: (){}, ),
+          IconButton(icon:Icon(Icons.shopping_cart,color: Colors.white,),onPressed: (){
+            Fluttertoast.showToast(msg: "Added in Cart",
+              toastLength: Toast.LENGTH_SHORT,
+                backgroundColor: Colors.deepPurple,
+              textColor: Colors.white
+            );
+          }, ),
+          IconButton(icon: Icon(Icons.search,color: Colors.white,), onPressed: (){
+            Fluttertoast.showToast(msg: "Searching Please wait..",
+              toastLength: Toast.LENGTH_SHORT,
+              backgroundColor: Colors.deepPurple,
+              textColor: Colors.white
+            );
+          }, ),
          // IconButton(icon: Icon(Icons.menu_book), onPressed: (){}, ),
         ],
         elevation: 0,
