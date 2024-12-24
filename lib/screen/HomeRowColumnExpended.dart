@@ -64,9 +64,7 @@ class Homerowcolumnexpended extends StatelessWidget {
               ],
             ),
           ],
-
         ),
-
       ),
     );
   }
