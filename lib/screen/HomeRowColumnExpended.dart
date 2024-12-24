@@ -22,8 +22,8 @@ class Homerowcolumnexpended extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(child: Image(image: AssetImage("images/profile.jpg"),width: 150)),
-                Expanded(child:Image(image: AssetImage("images/profile.jpg"),width: 150)),
-                Expanded(child:Image(image: AssetImage("images/profile.jpg"),width: 150)),
+                Expanded(flex: 2,child:Image(image: AssetImage("images/profile.jpg"),width: 150)),
+                Expanded(flex: 4,child:Image(image: AssetImage("images/profile.jpg"),width: 150)),
               ],
             ),
             SizedBox(height: 20),
