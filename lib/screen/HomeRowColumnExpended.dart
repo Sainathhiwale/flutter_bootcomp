@@ -9,18 +9,24 @@ class Homerowcolumnexpended extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(title: Text("Row and Column" ), centerTitle: true, ),
+      appBar: AppBar(title: Text("Row and Column" ), centerTitle: true,
+          backgroundColor: Colors.blueAccent,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))
+          ), ),
       body: Container(
         child: Column(
           children: [
+            SizedBox(height: 5,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(image: AssetImage("images/profile.jpg"),width: 150),
-                Image(image: AssetImage("images/profile.jpg"),width: 150),
-                Image(image: AssetImage("images/profile.jpg"),width: 150),
+                Expanded(child: Image(image: AssetImage("images/profile.jpg"),width: 150)),
+                Expanded(child:Image(image: AssetImage("images/profile.jpg"),width: 150)),
+                Expanded(child:Image(image: AssetImage("images/profile.jpg"),width: 150)),
               ],
             ),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
