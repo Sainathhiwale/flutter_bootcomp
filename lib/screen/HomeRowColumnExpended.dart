@@ -16,6 +16,14 @@ class Homerowcolumnexpended extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image(image: AssetImage("images/profile.jpg"),width: 150),
+                Image(image: AssetImage("images/profile.jpg"),width: 150),
+                Image(image: AssetImage("images/profile.jpg"),width: 150),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 Icon(Icons.star),
                 Icon(Icons.star),
                 Icon(Icons.star),
@@ -23,7 +31,7 @@ class Homerowcolumnexpended extends StatelessWidget {
                 Icon(Icons.star_border),
               ],
             ),
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
