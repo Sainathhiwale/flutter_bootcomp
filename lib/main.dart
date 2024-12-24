@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2025/screen/HomeAppBar.dart';
+import 'package:flutter_bootcamp_2025/screen/HomeRowColumnExpended.dart';
 import 'package:flutter_bootcamp_2025/screen/dashbroad.dart';
 import 'package:flutter_bootcamp_2025/screen/home.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "My Flutter App",
       debugShowCheckedModeBanner: false,
-      home: Homeappbar(),
+      home: Homerowcolumnexpended(),
     );
   }
 }
