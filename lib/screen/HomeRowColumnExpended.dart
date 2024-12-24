@@ -11,29 +11,44 @@ class Homerowcolumnexpended extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(title: Text("Row and Column" ), centerTitle: true, ),
       body: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
           children: [
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.phone,size: 34.0),
-                Text("Phone"),
+                Icon(Icons.star),
+                Icon(Icons.star),
+                Icon(Icons.star),
+                Icon(Icons.star_border),
+                Icon(Icons.star_border),
               ],
             ),
-            Column(
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.share,size: 34.0),
-                Text("Share"),
+                Column(
+                  children: [
+                    Icon(Icons.phone,size: 34.0),
+                    Text("Phone"),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(Icons.share,size: 34.0),
+                    Text("Share"),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Icon(Icons.cabin_sharp,size: 34.0),
+                    Text("Home"),
+                  ],
+                )
+
+
               ],
             ),
-            Column(
-              children: [
-                Icon(Icons.cabin_sharp,size: 34.0),
-                Text("Home"),
-              ],
-            )
-           
-            
           ],
         ),
       ),
