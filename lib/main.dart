@@ -7,6 +7,7 @@ import 'package:flutter_bootcamp_2025/screen/HomeListViewTile.dart';
 import 'package:flutter_bootcamp_2025/screen/HomeRowColumnExpended.dart';
 import 'package:flutter_bootcamp_2025/screen/ListViewBuilderHome.dart';
 import 'package:flutter_bootcamp_2025/screen/StackWidgetHome.dart';
+import 'package:flutter_bootcamp_2025/screen/customswidgets.dart';
 import 'package:flutter_bootcamp_2025/screen/dashbroad.dart';
 import 'package:flutter_bootcamp_2025/screen/home.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: "My Flutter App",
       debugShowCheckedModeBanner: false,
-      home: StackWidgetHome(),
+      home: Customswidgets(),
     );
   }
 }
