@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bootcamp_2025/screen/custome_widgets/ListTileWidget.dart';
 
 class Customswidgets extends StatelessWidget {
   const Customswidgets({super.key});
@@ -13,46 +14,19 @@ class Customswidgets extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListTileWidget(),
-          ListTileWidget(),
-          ListTileWidget()
-
+          ListTileWidget(
+            title: "Mouse",
+            subTitle: "M4Tech Mouse",
+          ),
+          ListTileWidget(
+            title: "Laptop",
+            subTitle: "Lenovo Laptop",
+            leadingIcon: Icons.laptop,
+            listTileColor: Colors.yellow,
+            trailingIcon: Icons.shopping_cart,
+            iconColor: Colors.pink,
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class ListTileWidget extends StatelessWidget {
-  const ListTileWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: ListTile(
-        tileColor: Colors.black12,
-        shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(width: 1.0, color: Colors.blue)),
-        title: Text(
-          "Mouse",
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue),
-        ),
-        subtitle: Text("4TechCom"),
-        leading: IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () {},
-        ),
-        trailing: IconButton(
-          icon: Icon(Icons.ice_skating),
-          onPressed: () {},
-        ),
       ),
     );
   }
