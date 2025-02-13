@@ -9,37 +9,76 @@ class MyForm extends StatefulWidget {
 }
 
 class _MyFormState extends State<MyForm> {
+  final _productConstroller = TextEditingController();
+  var _productName;
+
+  @override
+  void initState() {
+    super.initState();
+    _productConstroller.addListener(updateText);
+  }
+  void updateText() {
+    setState(() {
+      _productName = _productConstroller.text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Form"),
+        title: Text("Form Product"),
         centerTitle: true,
         backgroundColor: Colors.orange,
-        /*leading: IconButton(onPressed: () {
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back),
-        ),*/  // added back arrow if default is not showing
       ),
-      body: Center(
-        child: OutlinedButton(
-          style: OutlinedButton.styleFrom(minimumSize: const Size(200, 50)),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return Details();
-                },
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: ListView(
+          children: [
+            TextFormField(
+              controller: _productConstroller,
+              decoration: InputDecoration(
+                  labelText: "Product Name",
+                  prefixIcon: Icon(Icons.verified_user_outlined),
+                  border: OutlineInputBorder()),
+            ),
+            Text("Product Name ${_productConstroller.text}"),
+            SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: "Product Details",
+                prefixIcon: Icon(Icons.verified_user),
+                border: OutlineInputBorder(),
               ),
-            );
-          },
-          child: Text(
-            "Submit Form".toUpperCase(),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
+
+
+
 }
+/*
+* child: Center(
+          child: OutlinedButton(
+            style: OutlinedButton.styleFrom(minimumSize: const Size(200, 50)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return Details();
+                  },
+                ),
+              );
+            },
+            child: Text(
+              "Submit Form".toUpperCase(),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),*/

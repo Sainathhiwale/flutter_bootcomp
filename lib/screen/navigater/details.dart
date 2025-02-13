@@ -10,6 +10,10 @@ class Details extends StatelessWidget {
         title: Text("Details Page"),
         backgroundColor: Colors.green,
         centerTitle: true,
+        /*leading: IconButton(onPressed: () {
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back),
+        ),*/  // added back arrow if default is not showing
       ),
 
       body: Padding(
