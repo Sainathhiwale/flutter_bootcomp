@@ -1,58 +1,42 @@
 import 'package:flutter/material.dart';
 
 class Details extends StatelessWidget {
-  const Details({super.key});
+   Details({Key? key, required this.producName, required this.productDetails}):super(key:key);
+   String producName;
+   String productDetails;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details Page"),
+        title: Text(producName),
         backgroundColor: Colors.green,
         centerTitle: true,
-        /*leading: IconButton(onPressed: () {
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back),
-        ),*/  // added back arrow if default is not showing
+
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Container(
+      body: Container(
+        padding: const EdgeInsets.all(20.0),
           child: ListView(
             children: [
               ListTile(
-                title: Text("Laptop"),
-                subtitle: Text("4MTech Lenovo"),
-                trailing: Icon(Icons.account_balance),
+                title: Text(producName),
+                subtitle: Text(productDetails),
+                leading: Icon(Icons.account_balance),
                 onTap: (){
                 },
               ),
-              ListTile(
+             /* ListTile(
                 title: Text("Skating"),
                 subtitle: Text("4MTech Shoes"),
                 trailing: Icon(Icons.ice_skating),
                 onTap: (){
                 },
-              ),
-              ListTile(
-                title: Text("Mouse"),
-                subtitle: Text("4MTech Mouse"),
-                trailing: Icon(Icons.ac_unit_rounded),
-                onTap: (){
-                },
-              ),
-              ListTile(
-                title: Text("Laptop"),
-                subtitle: Text("4MTech Lenovo"),
-                trailing: Icon(Icons.computer_outlined),
-                onTap: (){
-                },
-              ),
+              ),*/
+
             ],
           ),
         ),
-      ),
     );
   }
 }
