@@ -1,58 +1,66 @@
-  on:
-    pull_request:
-      branches:
-        - flutter_form_radiobox
-    push:
-      branches:
-        - master
+name: Android Build & Release
 
-  name: "Build & Release"
-  jobs:
-    build:
-      name: Build & Release
-      runs-on: macos-latest
-      steps:
-        # Check out the repository
-        - uses: actions/checkout@v3
+on:
+  pull_request:
+    branches:
+      - shopping_dashbroad
+  push:
+    branches:
+      - master
 
-        # Set up Java
-        - uses: actions/setup-java@v3
-          with:
-            distribution: 'zulu'
-            java-version: '17'
+jobs:
+  build:
+    name: Build & Release APK
+    runs-on: ubuntu-22.04
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-        # Set up Gradle
-        - name: Set up Gradle
-          uses: gradle/gradle-build-action@v2
-          with:
-            gradle-version: 8.4
+      # Step 2: Set up Java
+      - name: Set up Java JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu'
 
-        # Set up Flutter
-        - uses: subosito/flutter-action@v2
-          with:
-            channel: 'stable'
-            architecture: x64
+      # Step 3: Grant Gradle wrapper execution permissions
+      - name: Change Gradle Wrapper Permissions
+        run: chmod +x ./gradlew
 
+      # Step 4: Install Dependencies
+      - name: Build Dependencies
+        run: ./gradlew dependencies
 
+      # Step 5: Build APK with Gradle
+      - name: Build APK
+        run: ./gradlew assembleRelease
 
-        # Build APK
-        - run: flutter build apk --release --split-per-abi
+      # Step 6: Debug APK Output
+      - name: Debug APK Output
+        run: ls -R app/build/outputs/
 
-        # Build iOS
-        - run: |
-            flutter build ios --no-codesign
-            cd build/ios/iphoneos
-            mkdir Payload
-            cd Payload
-            ln -s ../Runner.app
-            cd ..
-            zip -r app.ipa Payload
+      # Step 7: Upload APK artifact (Updated Path)
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app_release
+          path: app/build/outputs/apk/release/*.apk
 
-        # Push build artifacts to Releases
-        - name: Push to Releases
-          uses: ncipollo/release-action@v1
-          with:
-            artifacts: "build/app/outputs/apk/release/*,build/ios/iphoneos/app.ipa"
-            tag: v1.0.${{ github.run_number }}
-            token: ${{ secrets.TOKEN }}
+  release:
+    name: Release APK
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
+      # Step 2: Push APK artifact to GitHub Releases
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: app/build/outputs/apk/release/*.apk
+          tag: v1.0.${{ github.run_number }}
+          name: "Android Release v1.0.${{ github.run_number }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
