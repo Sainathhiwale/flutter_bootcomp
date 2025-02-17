@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2025/screen/checkbox/DetailsCheckbox.dart';
-import 'package:flutter_bootcamp_2025/screen/checkbox/mytextfield.dart';
+import 'package:flutter_bootcamp_2025/screen/custome_widgets/mytextfield.dart';
 
 enum ProductTypeEnum { Downloadable, Deliverable }
 
