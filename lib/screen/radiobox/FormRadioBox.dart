@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bootcamp_2025/screen/checkbox/DetailsCheckbox.dart';
 import 'package:flutter_bootcamp_2025/screen/custome_widgets/mytextfield.dart';
 
-class Formcheckbox extends StatefulWidget {
-  Formcheckbox({super.key});
+enum ProductTypeEnum { Downloadable, Deliverable }
+
+class Formradiobox extends StatefulWidget {
+  Formradiobox({super.key});
 
   @override
-  State<Formcheckbox> createState() => _FormcheckboxState();
+  State<Formradiobox> createState() => _FormcheckboxState();
 }
 
-class _FormcheckboxState extends State<Formcheckbox> {
+class _FormcheckboxState extends State<Formradiobox> {
   final _productConstroller = TextEditingController();
   final _productDetailsConstroller = TextEditingController();
   bool? _checkbox = false;
   bool? _checkboxlistTile = false;
+  ProductTypeEnum? _productTypeEnum;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class _FormcheckboxState extends State<Formcheckbox> {
         padding: EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            Text("Add Product" ),
+            Text("Add Product"),
             Text("Add product details in form below"),
             SizedBox(
               height: 20.0,
@@ -50,31 +53,59 @@ class _FormcheckboxState extends State<Formcheckbox> {
             SizedBox(
               height: 10.0,
             ),
-            Checkbox(
+            CheckboxListTile(
                 checkColor: Colors.white,
                 activeColor: Colors.purple,
-                tristate:true ,
-                value: _checkbox,
+                value: _checkboxlistTile,
+                title: Text("Top Product"),
                 onChanged: (val) {
                   setState(() {
-                    _checkbox = val;
+                    _checkboxlistTile = val;
                   });
                 }),
+
+            Row(
+              children: [
+                Expanded(
+                  child: RadioListTile<ProductTypeEnum>(
+                     contentPadding: EdgeInsets.all(0.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)
+                      ),
+                      dense: true,
+                      value: ProductTypeEnum.Deliverable,
+                      groupValue: _productTypeEnum,
+                      tileColor: Colors.purple.shade50,
+                      title: Text(ProductTypeEnum.Deliverable.name),
+                      onChanged: (val){
+                       setState(() {
+                         _productTypeEnum = val;
+                       });
+                      }),
+                ),
+                SizedBox(width: 10.0,),
+                Expanded(
+                  child: RadioListTile<ProductTypeEnum>(
+                      contentPadding: EdgeInsets.all(0.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0)
+                      ),
+                      dense: true,
+                      value: ProductTypeEnum.Downloadable,
+                      groupValue: _productTypeEnum,
+                      tileColor: Colors.pink.shade50,
+                      title: Text(ProductTypeEnum.Downloadable.name),
+                      onChanged: (val){
+                        setState(() {
+                         _productTypeEnum =val;
+                        });
+                      }),
+                ),
+              ],
+            ),
             SizedBox(
               height: 10.0,
             ),
-            CheckboxListTile(
-                value: _checkboxlistTile,
-                title: Text("Top Product"),
-                onChanged: (val){
-                 setState(() {
-                   _checkboxlistTile = val;
-                 });
-            }),
-            SizedBox(
-              height: 20.0,
-            ),
-            // Checkbox(value: value, onChanged: onChanged)
             myBtn(context),
           ],
         ),
@@ -93,7 +124,10 @@ class _FormcheckboxState extends State<Formcheckbox> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return Detailscheckbox(producName: _productConstroller.text, productDetails: _productDetailsConstroller.text, );
+              return Detailscheckbox(
+                producName: _productConstroller.text,
+                productDetails: _productDetailsConstroller.text,
+              );
             },
           ),
         );
