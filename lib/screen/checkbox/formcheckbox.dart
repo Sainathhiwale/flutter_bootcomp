@@ -13,6 +13,7 @@ class _FormcheckboxState extends State<Formcheckbox> {
   final _productConstroller = TextEditingController();
   final _productDetailsConstroller = TextEditingController();
   bool? _checkbox = false;
+  bool? _checkboxlistTile = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _FormcheckboxState extends State<Formcheckbox> {
         padding: EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            Text("Add Product"),
+            Text("Add Product" ),
             Text("Add product details in form below"),
             SizedBox(
               height: 20.0,
@@ -61,6 +62,17 @@ class _FormcheckboxState extends State<Formcheckbox> {
                 }),
             SizedBox(
               height: 10.0,
+            ),
+            CheckboxListTile(
+                value: _checkboxlistTile,
+                title: Text("Top Product"),
+                onChanged: (val){
+                 setState(() {
+                   _checkboxlistTile = val;
+                 });
+            }),
+            SizedBox(
+              height: 20.0,
             ),
             // Checkbox(value: value, onChanged: onChanged)
             myBtn(context),
