@@ -1,7 +1,7 @@
   on:
     pull_request:
       branches:
-        - flutter_form_checkbox
+        - flutter_form_radiobox
     push:
       branches:
         - master
