@@ -1,7 +1,7 @@
   on:
     pull_request:
       branches:
-        - flutter_form_controller_passvalue
+        - flutter_form_checkbox
     push:
       branches:
         - master
