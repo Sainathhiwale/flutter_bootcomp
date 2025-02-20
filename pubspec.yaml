@@ -42,6 +42,8 @@ dependencies:
   provider: ^6.1.2  # State management
   shared_preferences: ^2.3.5  # For local storage (if needed)
   go_router: ^14.6.2  # Optional: If you prefer navigation with GoRouter
+  dio: ^5.4.0  # Dio for network requests
+  json_annotation: ^4.9.0  # JSON serialization
 
 
 dev_dependencies:

@@ -14,6 +14,7 @@ import 'package:flutter_bootcamp_2025/screen/dashbroad.dart';
 import 'package:flutter_bootcamp_2025/screen/home.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/core/utils/app_routes.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/data/repositories/auth_repository.dart';
+import 'package:flutter_bootcamp_2025/screen/mvvm/data/services/api_service.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/domain/usecases/login_usecase.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/presentation/viewmodels/login_viewmodel.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/presentation/views/splash_screen.dart' show SplashScreen;
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget{
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => LoginViewModel(LoginUseCase(AuthRepository())),
+          create: (_) => LoginViewModel(LoginUseCase(AuthRepository(ApiService()))),
         ),
       ],
       child: MaterialApp(
