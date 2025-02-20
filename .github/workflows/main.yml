@@ -1,7 +1,7 @@
   on:
     pull_request:
       branches:
-        - flutter_form_radiobox
+        - flutter_mvvm_architecture
     push:
       branches:
         - master
