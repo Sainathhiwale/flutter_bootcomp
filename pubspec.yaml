@@ -38,6 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.6
   font_awesome_flutter: ^10.8.0
   fluttertoast: ^8.2.10
+  # mvvm architecture example libraries
+  provider: ^6.1.2  # State management
+  shared_preferences: ^2.3.5  # For local storage (if needed)
+  go_router: ^14.6.2  # Optional: If you prefer navigation with GoRouter
 
 
 dev_dependencies:
