@@ -7,7 +7,7 @@ class LoginUseCase {
 
   LoginUseCase(this.authRepository);
 
-  Future<bool> execute(String username, String password) {
-    return authRepository.login(User(username,password));
+  Future<String> execute(String username, String password) async {
+    return await authRepository.login(username, password);
   }
 }

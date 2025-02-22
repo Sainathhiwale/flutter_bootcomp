@@ -4,41 +4,28 @@ import 'package:flutter_bootcamp_2025/screen/mvvm/domain/usecases/login_usecase.
 
 class LoginViewModel extends ChangeNotifier {
   final LoginUseCase loginUseCase;
-  String _username = '';
-  String _password = '';
   bool _isLoading = false;
   String? _errorMessage;
+  String? _token; // Token stored after login
 
   LoginViewModel(this.loginUseCase);
 
-  String get email => _username;
-  String get password => _password;
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
+  String? get token => _token;
 
-  void setEmail(String email) {
-    _username = email;
-    notifyListeners();
-  }
-
-  void setPassword(String password) {
-    _password = password;
-    notifyListeners();
-  }
-
-  Future<bool> login() async {
+  Future<void> login(String username, String password) async {
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
 
-    bool success = await loginUseCase.execute(_username, _password);
-    _isLoading = false;
-
-    if (!success) {
-      _errorMessage = "Invalid credentials!";
+    try {
+      _token = await loginUseCase.execute(username, password);
+    } catch (e) {
+      _errorMessage = e.toString();
     }
 
+    _isLoading = false;
     notifyListeners();
-    return success;
   }
 }
