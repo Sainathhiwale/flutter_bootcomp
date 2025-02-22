@@ -36,6 +36,7 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             TextFormField(   // 83r5^_
+              controller: _passwordController,
             decoration: InputDecoration(   // 83r5^_
                   labelText: "Password",
                   prefixIcon: Icon(Icons.password, color: Colors.purple,),
