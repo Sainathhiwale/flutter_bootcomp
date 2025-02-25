@@ -1,7 +1,7 @@
   on:
     pull_request:
       branches:
-        - flutter_mvvm_architecture
+        - flutter_form_dropdown_spinner
     push:
       branches:
         - master

@@ -11,6 +11,7 @@ import 'package:flutter_bootcamp_2025/screen/StateLessFulWidget.dart';
 import 'package:flutter_bootcamp_2025/screen/checkbox/formcheckbox.dart';
 import 'package:flutter_bootcamp_2025/screen/customswidgets.dart';
 import 'package:flutter_bootcamp_2025/screen/dashbroad.dart';
+import 'package:flutter_bootcamp_2025/screen/dropdown_spineer/form_dropdown.dart';
 import 'package:flutter_bootcamp_2025/screen/home.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/core/utils/app_routes.dart';
 import 'package:flutter_bootcamp_2025/screen/mvvm/data/repositories/auth_repository.dart';
@@ -32,7 +33,13 @@ class MyApp extends StatelessWidget{
    MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MaterialApp(
+      title: "My Flutter App",
+      debugShowCheckedModeBanner: false,
+      home: FormDropdown(),
+    );
+
+   /* return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => LoginViewModel(LoginUseCase(AuthRepository(ApiService()))),
@@ -43,12 +50,8 @@ class MyApp extends StatelessWidget{
         initialRoute: AppRoutes.splash,
         onGenerateRoute: AppRoutes.generateRoute,
       ),
-    );
-    /*return MaterialApp(
-      title: "My Flutter App",
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
     );*/
+
   }
 }
 
