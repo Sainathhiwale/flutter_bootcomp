@@ -1,8 +1,12 @@
 
 
 class User{
-  String username;
-  String password;
+  final String username;
+  final String password;
 
-  User( this.username, this.password);
+  User({required this.username, required this.password});
+
+  Map<String, dynamic> toJson() {
+    return {"username": username, "password": password};
+  }
 }
